@@ -7,6 +7,13 @@ import torch
 
 from . import QTensor, dtype_info, qfallback
 
+from torch.utils.cpp_extension import load
+import cpu_ops
+#int_mm_cpu = load(name="cpu_mm", 
+#                sources=["/media/MERCURY/mehmet/projects/quanto/quanto/library/cpu/cpu_mm_mkl.cpp"],
+#                extra_ldflags = ["-lmkl_intel_ilp64", "-lmkl_intel_thread", "-lmkl_core", "-liomp5"],
+#                verbose=True)
+
 
 __all__ = ["get_qtensor_op_dispatch", "register_qtensor_op"]
 
@@ -233,6 +240,16 @@ def mm(op, input, other):
     ):
         # Use integer GEMM
         out_data = torch._int_mm(input._data, other._data)
+    elif(
+        input.device.type == "cpu"
+        and input.itype == torch.int8
+        and other.itype == torch.int8
+        and n > 16
+        and n % 8 == 0
+        and m % 8 == 0
+        and p % 8 == 0
+    ):
+        out_data = cpu_ops._int_mm(input._data, other._data)
     else:
         # Cast data to float32 and do the operation
         out_data = op(input._data.to(torch.float32), other._data.to(torch.float32))

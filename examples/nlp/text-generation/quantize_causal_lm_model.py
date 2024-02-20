@@ -104,7 +104,7 @@ def main():
     else:
         device = torch.device(args.device)
 
-    model = AutoModelForCausalLM.from_pretrained(args.model, torch_dtype=torch.float16, low_cpu_mem_usage=True).to(
+    model = AutoModelForCausalLM.from_pretrained(args.model, torch_dtype=torch.float32, low_cpu_mem_usage=True).to(
         device
     )
     tokenizer = AutoTokenizer.from_pretrained(args.model)

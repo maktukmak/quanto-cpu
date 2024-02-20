@@ -30,7 +30,7 @@ dev = ['pytest', 'ruff', 'black']
 version = {attr = "quanto.__version__"}
 
 [build-system]
-requires = ["setuptools>=61", "setuptools_scm"]
+requires = ["setuptools>=61", "setuptools_scm", "torch"]
 build-backend = "setuptools.build_meta"
 
 [tool.black]
