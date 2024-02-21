@@ -2,7 +2,7 @@ import argparse
 import timeit
 
 import torch
-
+import cpu_ops
 
 def main():
     parser = argparse.ArgumentParser(description="Torch integer matmul benchmark")
@@ -26,6 +26,8 @@ def main():
     def get_int_matmul(device):
         if device.type == ("cuda"):
             return torch._int_mm
+        elif device.type == ("cpu"):
+            return cpu_ops._int_mm
         return torch.matmul
 
     def avg_time(f, it):

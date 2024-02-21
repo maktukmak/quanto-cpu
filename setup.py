@@ -9,7 +9,7 @@ from typing import List, Set
 ext_modules = []
 cpu_extension = CppExtension(
    name='cpu_ops',
-   extra_compile_args = ['-g', '-O0'],
+   #extra_compile_args = ['-g', '-O0'],
    sources=['quanto/library/cpu/cpu_mm_mkl.cpp'],
     )
 ext_modules.append(cpu_extension)
