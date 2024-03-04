@@ -1,0 +1,15 @@
+{
+    "build": { "dockerfile": "dev-cpu.Dockerfile",
+                "args": {
+                  "-t": "quanto"
+                } }, 
+    "runArgs": ["--net=host", 
+                "-e", "https_proxy=http://proxy-chain.intel.com:912/", 
+                "-e", "http_proxy=http://proxy-chain.intel.com:911/", 
+                "-e", "PIP_ROOT_USER_ACTION=ignore"],
+    "customizations": {
+          "vscode": {
+            "extensions": ["ms-python.python", "streetsidesoftware.code-spell-checker", "ms-vscode.cpptools-extension-pack", "benjamin-simmonds.pythoncpp-debug"]
+          }
+        }
+  }
