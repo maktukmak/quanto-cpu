@@ -1,0 +1,43 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+			"label": "pip debug",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"command": "CXXFLAGS='-Wall -O0 -g' pip install -e . --force",
+		},
+		{
+			"label": "mkl_source",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/test_mehmet"
+			},
+			"command": "conda activate hf_quanto_cpu;source /opt/intel/oneapi/setvars.sh intel64",
+		},
+		{
+			"label": "cmake debug",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/test_mehmet"
+			},
+			"command": "source /opt/intel/oneapi/setvars.sh intel64;cmake -DCMAKE_BUILD_TYPE=Debug .;cmake --build . --target ${fileBasenameNoExtension}",
+		},
+		{
+			"label": "cmake release",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/test_mehmet"
+			},
+			"command": "cmake -DCMAKE_BUILD_TYPE=Release .;cmake --build . --target ${fileBasenameNoExtension} --clean",
+		},
+	]
+}
+
+//export CUDA_HOME=/usr/local/cuda-12.2;
+//export CUDA_PATH=/usr/local/cuda-12.2;
+//-DCMAKE_C_COMPILER=icx 
+//export TORCH_CUDA_ARCH_LIST=Turing
+//export CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-12.2
