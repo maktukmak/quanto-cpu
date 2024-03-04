@@ -1,9 +1,0 @@
-/media/MERCURY/mehmet/projects/quanto/test_mehmet/CMakeFiles/rebuild_cache.dir
-/media/MERCURY/mehmet/projects/quanto/test_mehmet/CMakeFiles/edit_cache.dir
-/media/MERCURY/mehmet/projects/quanto/test_mehmet/CMakeFiles/matrix_mul_mkl.dir
-/media/MERCURY/mehmet/projects/quanto/test_mehmet/CMakeFiles/test_torch_int8_mm.dir
-/media/MERCURY/mehmet/projects/quanto/test_mehmet/CMakeFiles/test_blass_int8.dir
-/media/MERCURY/mehmet/projects/quanto/test_mehmet/KERNELS/CMakeFiles/rebuild_cache.dir
-/media/MERCURY/mehmet/projects/quanto/test_mehmet/KERNELS/CMakeFiles/edit_cache.dir
-/media/MERCURY/mehmet/projects/quanto/test_mehmet/SAMPLES/CMakeFiles/rebuild_cache.dir
-/media/MERCURY/mehmet/projects/quanto/test_mehmet/SAMPLES/CMakeFiles/edit_cache.dir

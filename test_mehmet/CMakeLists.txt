@@ -9,7 +9,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 add_compile_options(-mfma -mavx512f -mavx512bf16 -mavx512vl)
 
 # LIBRARIES
-set(LIBTORCH /media/MERCURY/mehmet/anaconda3/envs/hf_quanto_cpu/lib/python3.10/site-packages/torch/share/cmake/Torch)
+execute_process ( COMMAND python3 -c "import torch; print(torch.utils.cmake_prefix_path)" OUTPUT_VARIABLE LIBTORCH OUTPUT_STRIP_TRAILING_WHITESPACE)
 set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};${LIBTORCH}")
 find_package(Torch REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
