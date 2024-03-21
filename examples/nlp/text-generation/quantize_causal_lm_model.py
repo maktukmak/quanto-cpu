@@ -40,38 +40,24 @@ def calibrate(model, tokenizer, dataset, device, batch_size, samples=None):
 
 
 def keyword_to_itype(k):
-    return {
-        "none": None,
-        "int4": qint4,
-        "int8": qint8,
-        "float8": qfloat8,
-    }[k]
+    return {"none": None, "int4": qint4, "int8": qint8, "float8": qfloat8,}[k]
 
 
 def main():
     parser = argparse.ArgumentParser(description="Transformers Causal LM Example")
     parser.add_argument("--seed", type=int, default=1, metavar="S", help="random seed (default: 1)")
     parser.add_argument(
-        "--model",
-        type=str,
-        default="facebook/opt-350m",
-        help="The name of the trained Model.",
+        "--model", type=str, default="facebook/opt-350m", help="The name of the trained Model.",
     )
     parser.add_argument("--prompt", type=str, default="One of my fondest memory is", help="The generation prompt.")
     parser.add_argument("--max_new_tokens", type=int, default=20, help="The maximum number of tokens to generate.")
     parser.add_argument("--batch_size", type=int, default=32, help="The batch_size for evaluation (and calibration).")
     parser.add_argument("--validation_batch", type=int, default=4, help="The number of batch to use for calibration.")
     parser.add_argument(
-        "--weights",
-        type=str,
-        default="int8",
-        choices=["int4", "int8", "float8"],
+        "--weights", type=str, default="int8", choices=["int4", "int8", "float8"],
     )
     parser.add_argument(
-        "--activations",
-        type=str,
-        default="int8",
-        choices=["none", "int8", "float8"],
+        "--activations", type=str, default="int8", choices=["none", "int8", "float8"],
     )
     parser.add_argument("--device", type=str, default=None, help="The device to use for generation.")
     parser.add_argument(

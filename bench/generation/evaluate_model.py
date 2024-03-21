@@ -26,12 +26,7 @@ def evaluate_model_configurations(
     ]
 
     def short_name(qtype: qtype):
-        return {
-            None: "f16",
-            qint4: "i4",
-            qint8: "i8",
-            qfloat8: "f8",
-        }[qtype]
+        return {None: "f16", qint4: "i4", qint8: "i8", qfloat8: "f8",}[qtype]
 
     results = {}
 
@@ -60,10 +55,7 @@ def main():
     parser = argparse.ArgumentParser(description="Evaluate quantized model predictions on Lambada Dataset")
     parser.add_argument("--seed", type=int, default=1, metavar="S", help="random seed (default: 1)")
     parser.add_argument(
-        "--model",
-        type=str,
-        default="facebook/opt-350m",
-        help="The name of the trained Model.",
+        "--model", type=str, default="facebook/opt-350m", help="The name of the trained Model.",
     )
     parser.add_argument("--device", type=str, default=None, help="The device to use for generation.")
     parser.add_argument("--metric", type=str, default="prediction", choices=["latency", "prediction", "perplexity"])

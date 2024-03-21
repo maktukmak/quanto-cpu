@@ -166,10 +166,7 @@ def latency(
 
 
 def latency_bnb(
-    model_id: str,
-    device: torch.device,
-    quantization: str,
-    iterations: int = 5,
+    model_id: str, device: torch.device, quantization: str, iterations: int = 5,
 ):
     if quantization == "bnb_4bit":
         quantization_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="fp4")

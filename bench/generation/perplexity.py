@@ -265,16 +265,10 @@ def main():
     parser.add_argument("--stride", type=int, default=512, help="The stride to use when evaluating perplexity.")
     parser.add_argument("--batch_size", type=int, default=32, help="The batch_size for evaluation (and calibration).")
     parser.add_argument(
-        "--weights",
-        type=str,
-        default="none",
-        choices=["none", "int4", "int8", "float8"],
+        "--weights", type=str, default="none", choices=["none", "int4", "int8", "float8"],
     )
     parser.add_argument(
-        "--activations",
-        type=str,
-        default="none",
-        choices=["none", "int8", "float8"],
+        "--activations", type=str, default="none", choices=["none", "int8", "float8"],
     )
     args = parser.parse_args()
     if args.device is None:
